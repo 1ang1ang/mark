@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elex.mark.mapper.UserMapper" >
+  <resultMap id="BaseResultMap" type="com.elex.mark.model.User" >
+    <id column="uid" property="uid" jdbcType="VARCHAR" />
+    <result column="phone_num" property="phoneNum" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="last_login_type" property="lastLoginType" jdbcType="INTEGER" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="gender" property="gender" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="age" property="age" jdbcType="INTEGER" />
+    <result column="identity" property="identity" jdbcType="INTEGER" />
+    <result column="register_time" property="registerTime" jdbcType="BIGINT" />
+    <result column="last_login_time" property="lastLoginTime" jdbcType="BIGINT" />
+    <result column="forbidden" property="forbidden" jdbcType="BIT" />
+    <result column="authority" property="authority" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    uid, phone_num, email, last_login_type, password, gender, name, age, identity, register_time,last_login_time,  forbidden, authority
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from user
+    where uid = #{uid,jdbcType=VARCHAR}
+  </select>
+  <select id="selectByName" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from user
+    where name = #{name,jdbcType=VARCHAR}
+  </select>
+  <select id="selectByEmail" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from user
+    where email = #{email,jdbcType=VARCHAR}
+  </select>
+  <select id="selectByPhone" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from user
+    where phone_num = #{phone,jdbcType=VARCHAR}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from user
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from user
+    where uid = #{uid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.elex.mark.model.User" >
+    insert into user (uid, phone_num, email,
+      last_login_type, password, gender,
+      name, age, identity,register_time,last_login_time, forbidden,authority
+      )
+    values (#{uid,jdbcType=VARCHAR}, #{phoneNum,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR},
+      #{lastLoginType,jdbcType=INTEGER}, #{password,jdbcType=VARCHAR}, #{gender,jdbcType=INTEGER},
+      #{name,jdbcType=VARCHAR}, #{age,jdbcType=INTEGER}, #{identity,jdbcType=INTEGER},#{registerTime,jdbcType=BIGINT},
+      #{lastLoginTime,jdbcType=BIGINT},#{forbidden,jdbcType=BIT},#{authority,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.elex.mark.model.User" >
+    insert into user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="uid != null" >
+        uid,
+      </if>
+      <if test="phoneNum != null" >
+        phone_num,
+      </if>
+      <if test="email != null" >
+        email,
+      </if>
+      <if test="lastLoginType != null" >
+        last_login_type,
+      </if>
+      <if test="password != null" >
+        password,
+      </if>
+      <if test="gender != null" >
+        gender,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="age != null" >
+        age,
+      </if>
+      <if test="identity != null" >
+        identity,
+      </if>
+      <if test="registerTime != null" >
+        register_time,
+      </if>
+      <if test="lastLoginTime != null" >
+        last_login_time,
+      </if>
+      <if test="forbidden != null" >
+        forbidden,
+      </if>
+      <if test="authority != null" >
+        authority,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="uid != null" >
+        #{uid,jdbcType=VARCHAR},
+      </if>
+      <if test="phoneNum != null" >
+        #{phoneNum,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="lastLoginType != null" >
+        #{lastLoginType,jdbcType=INTEGER},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null" >
+        #{gender,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null" >
+        #{age,jdbcType=INTEGER},
+      </if>
+      <if test="identity != null" >
+        #{identity,jdbcType=INTEGER},
+      </if>
+      <if test="registerTime != null" >
+        #{registerTime,jdbcType=BIGINT},
+      </if>
+      <if test="lastLoginTime != null" >
+        #{lastLoginTime,jdbcType=BIGINT},
+      </if>
+      <if test="forbidden != null" >
+        #{forbidden,jdbcType=BIT},
+      </if>
+      <if test="authority != null" >
+        #{authority,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.elex.mark.model.User" >
+    update user
+    <set >
+      <if test="phoneNum != null" >
+        phone_num = #{phoneNum,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="lastLoginType != null" >
+         last_login_type = #{lastLoginType,jdbcType=INTEGER},
+      </if>
+      <if test="password != null" >
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null" >
+        gender = #{gender,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null" >
+        age = #{age,jdbcType=INTEGER},
+      </if>
+      <if test="identity != null" >
+        identity = #{identity,jdbcType=INTEGER},
+      </if>
+      <if test="lastLoginTime != null" >
+        last_login_time = #{lastLoginTime,jdbcType=BIGINT},
+      </if>
+      <if test="registerTime != null" >
+        register_time = #{registerTime,jdbcType=BIGINT},
+      </if>
+      <if test="forbidden != null" >
+        forbidden = #{forbidden,jdbcType=BIT},
+      </if>
+      <if test="authority != null" >
+        authority = #{authority,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where uid = #{uid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.elex.mark.model.User" >
+    update user
+    set phone_num = #{phoneNum,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      last_login_type = #{lastLoginType,jdbcType=INTEGER},
+      password = #{password,jdbcType=VARCHAR},
+      gender = #{gender,jdbcType=INTEGER},
+      name = #{name,jdbcType=VARCHAR},
+      age = #{age,jdbcType=INTEGER},
+      identity = #{identity,jdbcType=INTEGER},
+      register_time = #{registerTime,jdbcType=BIGINT},
+      last_login_time = #{lastLoginTime,jdbcType=BIGINT},
+      forbidden = #{forbidden,jdbcType=BIT},
+      authority = #{authority,jdbcType=VARCHAR},
+    where uid = #{uid,jdbcType=VARCHAR}
+  </update>
+</mapper>
