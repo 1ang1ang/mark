@@ -1,8 +1,8 @@
 package com.elex.mark.bo;
 
 import com.elex.mark.util.annotation.CheckSqlInjection;
-import com.wordnik.swagger.annotations.ApiModel;
-import com.wordnik.swagger.annotations.ApiModelProperty;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 import javax.validation.constraints.NotNull;
 

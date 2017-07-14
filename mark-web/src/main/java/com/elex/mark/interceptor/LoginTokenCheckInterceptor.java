@@ -3,6 +3,7 @@ package com.elex.mark.interceptor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
+import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
@@ -18,7 +19,8 @@ public class LoginTokenCheckInterceptor extends HandlerInterceptorAdapter {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        logger.info("LoginTokenCheckInterceptor pre handler~~~");
+        HandlerMethod handlerMethod = (HandlerMethod) handler;
+        logger.info("LoginTokenCheckInterceptor pre handler~~~" + handlerMethod.getMethod());
         return true;
     }
 

@@ -2,12 +2,10 @@ package com.elex.mark.controller;
 
 import com.elex.mark.bo.UserLoginData;
 import com.elex.mark.bo.UserRegisterData;
-import com.elex.mark.enums.ApiAuthorityType;
 import com.elex.mark.error.LogicException;
 import com.elex.mark.model.User;
 import com.elex.mark.service.UserService;
-import com.elex.mark.util.annotation.Authority;
-import com.wordnik.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
